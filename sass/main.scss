@@ -1,0 +1,299 @@
+@use './colors' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Overpass', sans-serif;
+	overflow-x: hidden;
+}
+
+button {
+	margin: 0.25rem;
+	padding: 1rem 1.25rem;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: 600;
+	font-size: 1rem;
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 25px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+//nav
+.nav {
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	&__desktop {
+		display: none;
+	}
+
+	&__mobile {
+		position: absolute;
+		top: 100px;
+		right: 50%;
+		width: 300px;
+		padding: 1rem;
+		background-color: $white;
+		text-align: center;
+		border-radius: 8px;
+		box-shadow: 0 0 20px $verydarkblackblue;
+		transform: translateX(300%);
+		transition: transform 1s;
+		z-index: 100;
+
+		&--active {
+			transform: translateX(50%);
+		}
+
+		button {
+			padding: 0.5rem 2.25rem;
+			font-family: 'Overpass', sans-serif;
+			font-size: 1.125rem;
+		}
+	}
+
+	.hr-line {
+		border-top: none;
+		opacity: 0.4;
+	}
+
+	&__login-btn {
+		&--second {
+			background: linear-gradient(
+				135deg,
+				hsl(13, 100%, 72%) 0%,
+				hsl(353, 100%, 62%) 100%
+			);
+			color: $white;
+		}
+
+		&--second:hover {
+			background: linear-gradient(
+				135deg,
+				hsl(353, 100%, 62%) 0%,
+				hsl(13, 100%, 72%) 100%
+			);
+		}
+	}
+
+	.menu-item {
+		padding: 0.5rem 0;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: $verydarkblue;
+		transition: 0.3s;
+		cursor: pointer;
+	
+		img {
+			rotate: 0;
+		}
+	
+		.dropdown {
+			padding: 0.5rem 0;
+			font-size: 1rem;
+	
+			li {
+				display: none;
+				padding: 0.375rem 0;
+				background-color: hsl(240, 7%, 94%);
+				transition: color 0.3s;
+			}
+	
+			li:hover {
+				color: $verylightred;
+			}
+		}
+	}
+	
+	.menu-item:hover img {
+		rotate: 180deg;
+	}
+	
+	.menu-item:hover .dropdown li {
+		display: block;
+	}
+}
+
+//header
+.header {
+	background: $lightredgradient,
+		url('../images/bg-pattern-intro-mobile.svg') 35% 35%/350% no-repeat;
+	background-blend-mode: saturation;
+	height: 35rem;
+	border-bottom-left-radius: 100px; 
+
+	&__logo {
+		padding: 2.5rem 1.5rem;
+	}
+
+	.burger-icon {
+		position: absolute;
+		top: 2.75em;
+		right: 1.5em;
+		cursor: pointer;
+		z-index: 10;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		.disabled {
+			display: none;
+		}
+	}
+
+	&__text-box {
+		padding: 4rem 2.5rem;
+		text-align: center;
+		color: $white;
+	}
+
+	&__text {
+		margin: 2rem 0;
+	}
+
+	&__btn {
+		&--first {
+			background-color: $white;
+			color: $lightred;
+		}
+
+		&--first:hover {
+			background-color: $verylightred;
+			color: $white;
+		}
+
+		&--second {
+			border-color: $white;
+			color: $white;
+		}
+
+		&--second:hover {
+			background-color: $white;
+			color: $lightred;
+		}
+	}
+}
+
+//main
+.white-section {
+	position: relative;
+	padding: 4rem 0;
+	text-align: center;
+
+	.img-desktop--first, .img-desktop--second {
+		display: none;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		z-index: 10;
+	}
+
+	&__title {
+		margin: 3rem;
+		color: $verydarkblue;
+		font-size: 1.625rem;
+	}
+
+	&__text {
+		margin: 2.5rem;
+		color: $verydarkgrayishblue;
+		line-height: 1.75rem;
+	}
+}
+
+.darkblue-section {
+	position: relative;
+	margin-top: 10rem;
+	padding: 10rem 0;
+	background: $darkbluegradient,
+		url('../images/bg-pattern-circles.svg') 50% -350px / cover no-repeat;
+	background-blend-mode: lighten;
+	border-bottom-left-radius: 100px;
+	border-top-right-radius: 100px;
+	text-align: center;
+	z-index: -2;
+
+	img {
+		position: absolute;
+		top: -25%;
+		left: 50%;
+		translate: -50%;
+		width: 350px;
+		z-index: -1;
+	}
+
+	&__title {
+		margin: 3rem;
+		color: $white;
+		font-size: 2.25rem;
+	}
+
+	&__text {
+		margin: 2.5rem;
+		color: $white;
+		line-height: 1.75rem;
+	}
+}
+
+.footer {
+	padding-top: 2rem;
+	background-color: $verydarkblackblue;
+	color: $grayishblue;
+	border-top-right-radius: 100px;
+	text-align: center;
+
+	&__menu {
+		ul {
+			margin: 2rem 0;
+			font-size: 1.125rem;
+
+			p {
+				margin-bottom: 1rem;
+				color: $white;
+			}
+
+			a {
+				color: $grayishblue;
+				font-size: 1rem;
+				text-decoration: none;
+				transition: color .3s;
+			}
+
+			a:hover{
+				color: $lightred;
+			}
+		}
+	}
+
+	&__logo {
+		padding: 3rem 0;
+	}
+
+	.attribution {
+		font-size: 11px;
+	}
+
+	.attribution a {
+		color: $verylightred;
+	}
+}
+
+@import './tablet';
+@import './desktop';
